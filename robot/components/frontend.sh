@@ -31,8 +31,8 @@ echo -n "cleaning up the component: "
 rm -rf /usr/share/nginx/html*  &>> $LOGFILE
 stat $?
 
-echo -n "unzipping the component adn moving : "
 cd /usr/share/nginx/html
+echo -n "unzipping the component adn moving : "
 unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 mv $COMPONENT-main/* .
