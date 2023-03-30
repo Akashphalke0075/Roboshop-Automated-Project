@@ -35,6 +35,7 @@ cd /usr/share/nginx/html
 echo -n "unzipping the component adn moving : "
 unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
+
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
