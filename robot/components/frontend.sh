@@ -6,7 +6,7 @@ LOGFILE=/tmp/frontend.log
 USERID=$(id -u) 
 
 if [ $USERID -ne 0 ]; then
-echo "please login as sudo user"
+echo -e "\e[31mplease login as sudo \e[0m"
 exit 1
 fi
 
