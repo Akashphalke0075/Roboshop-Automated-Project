@@ -2,8 +2,8 @@
 
 set -e 
 
-UID=$(id -u)
-if [ $UID -ne 0 ]; then
+USERID=$(id -u)
+if [ $USERID -ne 0 ]; then
 echo -e "\e[31m please run as sudo user or root \e[0m"
 exit 1
 fi
