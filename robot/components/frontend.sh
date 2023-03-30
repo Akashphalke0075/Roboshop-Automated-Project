@@ -36,6 +36,7 @@ echo -n "unzipping the component adn moving: "
 unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 
+echo -n "moving and removing file: "
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
