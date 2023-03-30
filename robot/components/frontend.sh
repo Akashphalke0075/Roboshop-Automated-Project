@@ -30,9 +30,9 @@ stat $?
 
 echo -n "cleaunup performing: "
 rm -rf /usr/share/nginx/html/* &>> $LOGFILE
-cd /usr/share/nginx/html
 stat $?
 
+cd /usr/share/nginx/html
 echo -n "unzipping components: "
 unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
 echo -n "moving components: "
