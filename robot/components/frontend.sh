@@ -28,7 +28,7 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 stat $?
 
 echo -n "cleaning up the component: "
-rm -rf /usr/share/nginx/html*  &>> $LOGFILE
+rm -rf /usr/share/nginx/html/*  &>> $LOGFILE
 stat $?
 
 cd /usr/share/nginx/html
