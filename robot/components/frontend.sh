@@ -32,7 +32,7 @@ rm -rf /usr/share/nginx/html/*  &>> $LOGFILE
 stat $?
 
 cd /usr/share/nginx/html
-echo -n "unzipping the component adn moving : "
+echo -n "unzipping the component adn moving: "
 unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 
