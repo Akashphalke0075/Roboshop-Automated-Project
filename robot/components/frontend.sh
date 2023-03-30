@@ -4,15 +4,12 @@ set -e
 
 COMPONENT=frontend
 LOGFILE=/tmp/$COMPONENT.log
-USERID=$(id -u)  &>> $LOGFILE
+USERID=$(id -u) 
+
 if [ $USERID -ne 0 ]; then
 echo -e "\e[31m please run as sudo user or root \e[0m"
 exit 1
 fi
-
-echo -n "installing nginx: "
-yum install nginx -y   &>> $LOGFILE
-stat $?
 
 stat () {
 if [ $1 -eq  0 ]; then
@@ -21,6 +18,11 @@ else
 echo -e "\e[31mfailure \e[0m"
 fi
 }
+
+echo -n "installing nginx: "
+yum install nginx -y   &>> $LOGFILE
+stat $?
+
 
 echo -n "downloading component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"  &>> $LOGFILE
