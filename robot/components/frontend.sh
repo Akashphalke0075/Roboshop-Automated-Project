@@ -3,7 +3,7 @@
 echo -e "\e[32m installing nginx \e[0m"
 yum install nginx -y  
 
-# curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
 rm -rf /usr/share/nginx/html
 cd /usr/share/nginx/html
