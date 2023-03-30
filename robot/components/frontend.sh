@@ -35,6 +35,8 @@ stat $?
 cd /usr/share/nginx/html
 echo -n "unzipping components: "
 unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
+stat $?
+
 echo -n "moving components: "
 mv $COMPONENT-main/* .
 mv static/* .
