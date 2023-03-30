@@ -1,5 +1,13 @@
 #!/bin/bash
 
+set -e 
+
+UID=$(id -u)
+if [ $UID -ne 0 ]; then
+echo -e "\e[31m please run as sudo user or root \e[0m"
+exit 1
+fi
+
 echo -e "\e[32m installing nginx \e[0m"
 yum install nginx -y  
 
@@ -18,26 +26,5 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
 systemctl enable nginx
 systemctl start nginx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# systemctl enable nginx
-# systemctl start nginx
-
 
 
