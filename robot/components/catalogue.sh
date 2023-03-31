@@ -54,3 +54,5 @@ systemctl daemon-reload &>> $LOGFILE
 systemctl start catalogue &>> $LOGFILE
 systemctl enable catalogue &>> $LOGFILE
 stat $?
+
+echo -e "\e[31m..............cataloguecompleted....... \e[0m"
