@@ -50,7 +50,7 @@ mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.serv
 stat $?
 
 echo -n "starting nginx : "
-systemctl daemon-reload
-systemctl start catalogue
-systemctl enable catalogue
+systemctl daemon-reload &>> $LOGFILE
+systemctl start catalogue &>> $LOGFILE
+systemctl enable catalogue &>> $LOGFILE
 stat $?
