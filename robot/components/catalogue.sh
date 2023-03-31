@@ -18,8 +18,8 @@ echo -n "creating user: "
 id $APPUSER &>> $LOGFILE
 if [ $? -ne 0 ]; then
 useradd $APPUSER &>> $LOGFILE
-stat $?
 fi
+stat $?
 
 echo -n "downloafing $COMPONENT: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"  &>> $LOGFILE
