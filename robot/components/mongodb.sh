@@ -29,7 +29,7 @@ stat $?
 
 echo -n "unzipping the component: "
 cd /tmp
-unzip $COMPONENT.zip  &>> $LOGFILE
+unzip -o $COMPONENT.zip  &>> $LOGFILE
 stat $?
 
 echo -n "ijnecting schema: "
