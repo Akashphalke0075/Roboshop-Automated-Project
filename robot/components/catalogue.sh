@@ -28,6 +28,7 @@ stat $?
 echo -n "unzipping the component adn moving: "
 cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
+stat $?
 
 echo -n "performing cleaup: "
 rm -rf $COMPONENT
