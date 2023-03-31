@@ -26,8 +26,8 @@ echo -n "adding user : "
 rabbitmqctl list_users | grep roboshop &>> $LOGFILE
 if [ $? -ne 0 ]; then
 rabbitmqctl add_user roboshop roboshop123
-stat $?
 fi
+stat $?
 
 echo -n "adding permission tag : "
 rabbitmqctl set_user_tags roboshop administrator  &>> $LOGFILE
