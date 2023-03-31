@@ -39,3 +39,7 @@ echo -n "installing npm: "
 cd /home/$APPUSER/$COMPONENT
 npm install &>> $LOGFILE
 stat $?
+
+echo -n "Changing permissions: "
+chown $APPUSER:$APPUSER  /home/$APPUSER/$COMPONENT
+stat $
