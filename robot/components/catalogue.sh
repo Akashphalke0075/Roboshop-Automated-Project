@@ -41,5 +41,5 @@ npm install &>> $LOGFILE
 stat $?
 
 echo -n "Changing permissions: "
-chown $APPUSER:$APPUSER  /home/$APPUSER/$COMPONENT
+chown -R $APPUSER:$APPUSER  /home/$APPUSER/$COMPONENT
 stat $
