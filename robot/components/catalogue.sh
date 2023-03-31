@@ -43,3 +43,14 @@ stat $?
 echo -n "Changing permissions: "
 chown -R $APPUSER:$APPUSER  /home/$APPUSER/$COMPONENT
 stat $
+
+echo -n "Configuring dns name: "
+sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/'  /home/$APPUSER/$COMPONENT/systemd.service 
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
+
+echo -n "starting nginx : "
+systemctl daemon-reload
+systemctl start catalogue
+systemctl enable catalogue
+stat $?
