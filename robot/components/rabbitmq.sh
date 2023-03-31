@@ -23,7 +23,7 @@ systemctl start rabbitmq-server  &>> $LOGFILE
 stat $?
 
 echo -n "adding user : "
-rabbitmqctl list_user | grep roboshop &>> $LOGFILE
+rabbitmqctl list_users | grep roboshop &>> $LOGFILE
 if [ $? -ne 0 ]; then
 rabbitmqctl add_user roboshop roboshop123
 stat $?
