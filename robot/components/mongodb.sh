@@ -17,11 +17,17 @@ echo -n "listening the port: "
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf  
 stat $?
 
+
+echo -n "starting $COMPONENT : "
+systemctl enable mongod &>> $LOGFILE
+systemctl start mongod &>> $LOGFILE
+stat $?
+
 echo -n "downloading the component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"  &>> $LOGFILE
 stat $?
 
-echo -n "downloading the component: "
+echo -n "unzipping the component: "
 cd /tmp
 unzip $COMPONENT.zip  &>> $LOGFILE
 stat $?
@@ -33,10 +39,6 @@ mongo < users.js   &>> $LOGFILE
 stat $?
 
 
-echo -n "starting $COMPONENT : "
-systemctl enable mongod &>> $LOGFILE
-systemctl start mongod &>> $LOGFILE
-stat $?
 
 
 
