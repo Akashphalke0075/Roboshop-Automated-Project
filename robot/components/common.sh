@@ -101,3 +101,29 @@ MVN_INSTALL() {
      mv target/$COMPONENT-1.0.jar $COMPONENT.jar
     stat $?
 }
+
+
+PYTHON() {
+    echo -n "Installing Python3 and other dependencies:"
+    yum install python36 gcc python3-devel -y &>> $LOGFILE
+    stat $? 
+
+    # Calling create_user function
+    CREATE_USER    
+
+    # Downloading the code
+    DOWNLOAD_AND_EXTRACT 
+
+    USERID=$(id -u roboshop)
+    GROUPID=$(id -g roboshop)
+
+    cd /home/$APPUSER/$COMPONENT/
+    pip3 install -r requirements.txt &>> $LOGFILE
+    
+    echo -n "Updating the uid and gid with $APPUSER in $PAYMENT.ini : "
+    sed -i -e "/^uid/ c uid=$USERID"  -e "/^gid/ c gid=$GROUPID" /home/$APPUSER/$COMPONENT/$COMPONENT.ini 
+    stat $?
+
+    # Configures Services
+    CONFIGURE_SERVICE
+}
