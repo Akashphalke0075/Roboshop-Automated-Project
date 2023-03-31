@@ -2,7 +2,7 @@
 
 set -e
 
-COMPONENT=shiiping
+COMPONENT=shipping
 APPUSER=roboshop
 source components/common.sh
 
