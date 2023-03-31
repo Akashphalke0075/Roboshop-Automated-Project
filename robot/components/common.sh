@@ -109,10 +109,10 @@ PYTHON() {
     stat $? 
 
     # Calling create_user function
-    CREATE_USER    
+    CREATE_USER   
 
     # Downloading the code
-    DOWNLOAD_AND_EXTRACT 
+    DOWNLOAD_EXTRACT
 
     USERID=$(id -u roboshop)
     GROUPID=$(id -g roboshop)
