@@ -55,4 +55,4 @@ systemctl start catalogue &>> $LOGFILE
 systemctl enable catalogue &>> $LOGFILE
 stat $?
 
-echo -e "\e[31m..............cataloguecompleted....... \e[0m"
+echo -e "\e[32m..............catalogue completed....... \e[0m"
