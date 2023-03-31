@@ -52,7 +52,7 @@ echo -n "performing cleaup: "
 rm -rf /home/$APPUSER/$COMPONENT
 stat $?
 
-echo -n "unzipping the component adn moving: "
+echo -n "unzipping the component and moving: "
 cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE && mv $COMPONENT-main $COMPONENT  &>> $LOGFILE 
 stat $?
@@ -71,7 +71,7 @@ stat $?
 
 CONFIGURE_SERVICE() {
 echo -n "Configuring dns name: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/'  /home/$APPUSER/$COMPONENT/systemd.service 
+sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/' -e 's/MONGO_ENDPOINT/mongodb.robot.internal/' -e 's/REDIS_ENDPOINT/redis.robot.internal/'  -e 's/REDIS_ENDPOINT/redis.robot.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.robot.internal/'   /home/$APPUSER/$COMPONENT/systemd.service 
 mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 echo -n "starting nginx : "
