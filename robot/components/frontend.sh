@@ -33,6 +33,12 @@ echo -n "unzipping the component adn moving : "
 mv localhost.conf /etc/nginx/default.d/roboshop.conf  
 stat $?
 
+for component in catalogue cart user shipping payment; do
+    echo -n "Configuring Reverse Proxy : "
+    sed -i -e "/$component/s/localhost/$component.robot.internal/"  /etc/nginx/default.d/roboshop.conf 
+    stat $?
+done
+
 
 echo -n "starting nginx : "
 systemctl enable nginx  &>> $LOGFILE
