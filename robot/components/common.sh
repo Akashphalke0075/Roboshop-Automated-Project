@@ -44,22 +44,19 @@ stat $?
 }
 
 DOWNLOAD_EXTRACT() {
-    echo -n "downloafing $COMPONENT: "
-curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"  &>> $LOGFILE
-stat $?
+    echo -n "Downloading the $COMPONENT:"
+    curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+    stat $? 
 
-echo -n "performing cleaup: "
-rm -rf /home/$APPUSER/$COMPONENT
-stat $?
+    echo -n "Performing Cleanup:"
+    rm -rf /home/$APPUSER/$COMPONENT
+    cd /home/$APPUSER/ 
+    unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE && mv $COMPONENT-main $COMPONENT  &>> $LOGFILE 
+    stat $? 
 
-echo -n "unzipping the component and moving: "
-cd /home/$APPUSER
-unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE && mv $COMPONENT-main $COMPONENT  &>> $LOGFILE 
-stat $?
-
-echo -n "Changing permissions: "
-chown -R $APPUSER:$APPUSER  /home/$APPUSER/$COMPONENT
-stat $ 
+    echo -n "Changing permissions to $APPUSER"
+    chown -R $APPUSER:$APPUSER /home/roboshop/$COMPONENT &&  chmod -R 775 /home/roboshop/$COMPONENT 
+    stat $?
 }
 
 NPM_INSTALL() {
