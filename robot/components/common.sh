@@ -71,7 +71,7 @@ stat $?
 
 CONFIGURE_SERVICE() {
 echo -n "Configuring dns name: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/' -e 's/MONGO_ENDPOINT/mongodb.robot.internal/' -e 's/REDIS_ENDPOINT/redis.robot.internal/'  -e 's/REDIS_ENDPOINT/redis.robot.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.robot.internal/'   /home/$APPUSER/$COMPONENT/systemd.service 
+sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/' -e 's/CARTENDPOINT/cart.robot.internal/' -e 's/DBHOST/mysql.robot.internal/'   -e 's/MONGO_ENDPOINT/mongodb.robot.internal/' -e 's/REDIS_ENDPOINT/redis.robot.internal/'  -e 's/REDIS_ENDPOINT/redis.robot.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.robot.internal/'   /home/$APPUSER/$COMPONENT/systemd.service 
 mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 echo -n "starting nginx : "
@@ -79,4 +79,28 @@ systemctl daemon-reload &>> $LOGFILE
 systemctl start $COMPONENT &>> $LOGFILE
 systemctl enable $COMPONENT &>> $LOGFILE
 stat $?
+}
+
+
+MAVEN() {
+echo -n "installing maven: "    
+yum install maven -y  &>> $LOGFILE
+
+CREATE_USER
+
+DOWNLOAD_EXTRACT
+
+MVN_INSTALL
+ 
+CONFIGURE_SERVICE
+
+}
+
+
+MVN_INSTALL() {
+    echo -n "Installing $COMPONENT Dependencies: "
+    cd $COMPONENT 
+    mvn clean package &>> $LOGFILE
+     mv target/$COMPONENT-1.0.jar $COMPONENT.jar
+    stat $?
 }
