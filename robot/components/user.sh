@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-COMPONENT=catalogue
+COMPONENT=user
 APPUSER=roboshop
 source components/common.sh
 
@@ -45,7 +45,7 @@ chown -R $APPUSER:$APPUSER  /home/$APPUSER/$COMPONENT
 stat $
 
 echo -n "Configuring dns name: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/'  /home/$APPUSER/$COMPONENT/systemd.service 
+sed -i -e 's/MONGO_ENDPOINT/mongodb.robot.internal/' -e 's/REDIS_ENDPOINT/redis.robot.internal/'  /home/$APPUSER/$COMPONENT/systemd.service 
 mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 
@@ -55,4 +55,4 @@ systemctl start $COMPONENT &>> $LOGFILE
 systemctl enable $COMPONENT &>> $LOGFILE
 stat $?
 
-echo -e "\e[32m..............catalogue completed....... \e[0m"
+echo -e "\e[32m.............$COMPONENT is completed....... \e[0m"
