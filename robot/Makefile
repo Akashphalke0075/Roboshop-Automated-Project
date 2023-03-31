@@ -14,4 +14,4 @@ user:
 	bash components/user.sh	
 
 cart:
-	bash components/cart.sh	
+	bash components/cart.sh
