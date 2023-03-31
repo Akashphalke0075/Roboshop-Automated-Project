@@ -19,6 +19,6 @@ stat $?
 
 
 echo -n "starting redis : "
-systemctl enable redis
-systemctl start redis
+systemctl enable redis &>> $LOGFILE
+systemctl start redis &>> $LOGFILE
 stat $?
