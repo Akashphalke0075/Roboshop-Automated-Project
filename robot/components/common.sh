@@ -68,7 +68,7 @@ stat $?
 
 CONFIGURE_SERVICE() {
 echo -n "Configuring dns name: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/' -e 's/CARTENDPOINT/cart.robot.internal/' -e 's/DBHOST/mysql.robot.internal/'   -e 's/MONGO_ENDPOINT/mongodb.robot.internal/' -e 's/REDIS_ENDPOINT/redis.robot.internal/'  -e 's/REDIS_ENDPOINT/redis.robot.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.robot.internal/'   /home/$APPUSER/$COMPONENT/systemd.service 
+sed -i -e 's/MONGO_DNSNAME/mongodb.robot.internal/' -e 's/AMQPHOST/rabbitmq.robot.internal/'    -e 's/USERHOST/user.robot.internal/'   -e 's/CARTHOST/cart.robot.internal/'  -e 's/CARTENDPOINT/cart.robot.internal/' -e 's/DBHOST/mysql.robot.internal/'   -e 's/MONGO_ENDPOINT/mongodb.robot.internal/' -e 's/REDIS_ENDPOINT/redis.robot.internal/'  -e 's/REDIS_ENDPOINT/redis.robot.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.robot.internal/'   /home/$APPUSER/$COMPONENT/systemd.service 
 mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 echo -n "starting nginx : "
