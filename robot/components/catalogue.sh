@@ -29,10 +29,12 @@ echo -n "unzipping the component adn moving: "
 cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 
+echo -n "performing cleaup: "
 rm -rf $COMPONENT
 mv $COMPONENT-main $COMPONENT
 stat $?
 
+echo -n "installing npm: "
 cd /home/$APPUSER/$COMPONENT
 npm install &>> $LOGFILE
 stat $?
